@@ -29,7 +29,7 @@ class RandomImage private () extends MongoRecord[RandomImage] with ObjectIdPk[Ra
   }
 
   object random extends DoubleField(this) {
-    override def defaultValue = Math.random()
+    override def defaultValue = scala.math.random * RandomText.findAll.size
   }
 
   object fileId extends StringField(this, 50)
@@ -37,8 +37,8 @@ class RandomImage private () extends MongoRecord[RandomImage] with ObjectIdPk[Ra
 
 object RandomImage extends RandomImage with MongoMetaRecord[RandomImage] {
   def findRandom(random: Double): Box[RandomImage] = {
-    RandomImage where(_.random gte Math.random()) fetch(1) headOption match {
-      case None => findRandom(Math.random())
+    RandomImage.skip((scala.math.random * RandomImage.count).toInt).fetch(1) headOption match {
+      case None => findRandom((scala.math.random * RandomImage.count).toInt)
       case other => other
     }
   }

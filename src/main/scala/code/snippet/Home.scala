@@ -18,8 +18,8 @@ import net.liftweb.mongodb.{DefaultMongoIdentifier, MongoDB}
 object Home {
 
   def render = {
-    val image = RandomImage.findRandom(Math.random()).dmap("")(_.id.get.toString)
-    val text = RandomText.findRandom(Math.random()).dmap("")(_.text.get)
+    val image = RandomImage.findRandom((scala.math.random * RandomImage.count).toInt).dmap("")(_.id.get.toString)
+    val text = RandomText.findRandom((scala.math.random * RandomImage.count).toInt).dmap("")(_.text.get)
     "data-name=random-image [src]" #> s"/serving/image/${image}" &
     "data-name=random-text *" #> text
   }

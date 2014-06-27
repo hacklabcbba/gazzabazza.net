@@ -2,4 +2,9 @@ mail.smtp.host=smtp.gmail.com
 mail.smtp.user=
 mail.smtp.pass=
 
-mongo.default.port=27017
+#cloudbeess dev gobernacion
+mongo.default.url=mongodb://cloudbees:oBmMyh6w7R7m1fQoHWTSP3OBsRR55ZY-drtSKc_lT-orxwE_3eQDtZKKVxq67267c58yD9uCkuLFZklXKmS28A@kahana.mongohq.com:10051/UN5pMXpVgCt102Uacv6lA
+mongo.default.name=UN5pMXpVgCt102Uacv6lA
+mongo.default.user=cloudbees
+mongo.default.port=10051
+mongo.default.pwd=oBmMyh6w7R7m1fQoHWTSP3OBsRR55ZY-drtSKc_lT-orxwE_3eQDtZKKVxq67267c58yD9uCkuLFZklXKmS28A
