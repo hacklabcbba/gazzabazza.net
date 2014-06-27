@@ -27,6 +27,8 @@ class RandomImage private () extends MongoRecord[RandomImage] with ObjectIdPk[Ra
   object title extends StringField(this, 256) {
     override def defaultValue = "Untitled"
   }
+
+  object fileId extends StringField(this, 50)
 }
 
 object RandomImage extends RandomImage with MongoMetaRecord[RandomImage]
