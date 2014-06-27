@@ -29,4 +29,4 @@ class RandomImage private () extends MongoRecord[RandomImage] with ObjectIdPk[Ra
   }
 }
 
-object RandomImage extends RandomImage with MongoMetaRecord[RandomImage] 
+object RandomImage extends RandomImage with MongoMetaRecord[RandomImage]

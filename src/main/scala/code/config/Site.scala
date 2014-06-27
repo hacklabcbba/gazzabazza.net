@@ -52,6 +52,7 @@ object Site extends Locs {
     account.menu,
     password.menu,
     editProfile.menu,
+    Menu.i("Upload") / "upload" >> Hidden,
     Menu.i("Error") / "error" >> Hidden,
     Menu.i("404") / "404" >> Hidden,
     Menu.i("Throw") / "throw"  >> EarlyResponse(() => throw new Exception("This is only a test."))
