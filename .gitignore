@@ -1,10 +1,9 @@
 *.class
 *.log
+*.db
+*.orig
 
 # sbt specific
-.cache/
-.history/
-.lib/
 dist/*
 target/
 lib_managed/
@@ -14,4 +13,10 @@ project/plugins/project/
 
 # Scala-IDE specific
 .scala_dependencies
-.worksheet
+
+# Intellij Idea
+.idea/
+.idea_modules/
+atlassian-ide-plugin.xml
+*.iml
+node_modules/*

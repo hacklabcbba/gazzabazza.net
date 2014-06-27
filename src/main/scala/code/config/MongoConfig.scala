@@ -26,7 +26,7 @@ object MongoConfig extends Factory with Loggable {
       .openOr(new DBAddress(
         Props.get("mongo.default.host", "127.0.0.1"),
         Props.getInt("mongo.default.port", 27017),
-        Props.get("mongo.default.name", "gazzabazza.net")
+        Props.get("mongo.default.name", "gazzabazza")
       ))
 
     /*
