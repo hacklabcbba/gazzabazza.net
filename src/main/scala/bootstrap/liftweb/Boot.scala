@@ -59,6 +59,11 @@ class Boot extends Loggable {
     ErrorHandler.init
     LiftRules.statelessDispatch.append(RandomImageApi)
 
+    LiftRules.maxMimeSize = 100000 * 1024 * 1024
+    LiftRules.maxMimeFileSize = 99000 * 1024 * 1024
+
+    LiftRules.handleMimeFile = OnDiskFileParamHolder.apply
+
     // 404 handler
     LiftRules.uriNotFound.prepend(NamedPF("404handler") {
       case (req, failure) =>
