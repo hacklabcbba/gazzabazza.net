@@ -14,6 +14,7 @@ import code.model.{SystemUser, User}
 
 import net.liftmodules.extras.{Gravatar, LiftExtras}
 import net.liftmodules.mongoauth.MongoAuth
+import code.lib.RandomImageApi
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -56,6 +57,7 @@ class Boot extends Loggable {
 
     // Error handler
     ErrorHandler.init
+    LiftRules.statelessDispatch.append(RandomImageApi)
 
     // 404 handler
     LiftRules.uriNotFound.prepend(NamedPF("404handler") {

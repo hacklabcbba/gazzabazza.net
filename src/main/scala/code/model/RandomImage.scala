@@ -28,7 +28,18 @@ class RandomImage private () extends MongoRecord[RandomImage] with ObjectIdPk[Ra
     override def defaultValue = "Untitled"
   }
 
+  object random extends DoubleField(this) {
+    override def defaultValue = Math.random()
+  }
+
   object fileId extends StringField(this, 50)
 }
 
-object RandomImage extends RandomImage with MongoMetaRecord[RandomImage]
+object RandomImage extends RandomImage with MongoMetaRecord[RandomImage] {
+  def findRandom(random: Double): Box[RandomImage] = {
+    RandomImage where(_.random gte Math.random()) fetch(1) headOption match {
+      case None => findRandom(Math.random())
+      case other => other
+    }
+  }
+}

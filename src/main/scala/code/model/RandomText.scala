@@ -30,7 +30,18 @@ class RandomText private () extends MongoRecord[RandomText] with ObjectIdPk[Rand
     override def defaultValue = "No text"
   }
 
+  object random extends DoubleField(this) {
+    override def defaultValue = Math.random()
+  }
+
 }
 
-object RandomText extends RandomText with MongoMetaRecord[RandomText]
+object RandomText extends RandomText with MongoMetaRecord[RandomText] {
+  def findRandom(random: Double): Box[RandomText] = {
+    RandomText where(_.random gte Math.random()) fetch(1) headOption match {
+      case None => findRandom(Math.random())
+      case other => other
+    }
+  }
+}
 
